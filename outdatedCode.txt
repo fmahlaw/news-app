@@ -1,0 +1,40 @@
+ function for filtered news
+ reason : there's more sophitiscared function in use
+ 
+ // function OneValueQuery(query, input) {
+  //   try {
+  //     filteredArticle = newsData.articles.filter((news) =>
+  //       news[query].toLowerCase().includes(data[input].toLowerCase())
+  //     );
+  //     if (filteredArticle.length > 0) previousArticle = filteredArticle;
+  //     setData((value) => ({ ...value, articles: filteredArticle }));
+  //   } catch (error) {
+  //     return;
+  //   }
+  // }
+
+  // function TwoValueQuery(query, input, query2, input2) {
+  //   filteredArticle = newsData.articles.filter(
+  //     (news) =>
+  //       news[query].includes(data[input]) && news[query2].includes(data[input2])
+  //   );
+  //   if (filteredArticle.length > 0) previousArticle = filteredArticle;
+  //   setData((value) => ({
+  //     ...value,
+  //     articles: filteredArticle,
+  //   }));
+  // }
+
+  // function ThreeValueQuery(query, input, query2, input2, query3, input3) {
+  //   filteredArticle = newsData.articles.filter(
+  //     (news) =>
+  //       news[query].includes(data[input]) &&
+  //       news[query2].includes(data[input2]) &&
+  //       news[query3].includes(data[input3])
+  //   );
+  //   if (filteredArticle.length > 0) previousArticle = filteredArticle;
+  //   return setData((value) => ({
+  //     ...value,
+  //     articles: filteredArticle,
+  //   }));
+  // }

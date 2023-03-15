@@ -62,21 +62,26 @@ const categories = [
     name: "Deals",
     keywords: ["deal", "gift", "card"],
   },
+  {
+    name: "Otomotif",
+    keywords: ["car", "tesla", "vehicle"],
+  },
   // Add more categories and associated keywords as needed
 ];
 const LINK = process.env.REACT_APP_LINK;
 (async function GetData() {
   try {
-    newsData = dummyData;
-    // const resp = await axios.get(LINK);
-    // newsData = resp.data;
+    const resp = await axios.get(LINK);
+    newsData = resp.data;
     await AssignTag();
   } catch (error) {
-    // newsData = dummyData;
+    console.log(error);
+    newsData = dummyData;
   }
 })();
 
 function AssignTag() {
+  console.log(newsData);
   newsData.articles.forEach((article) => {
     for (let i = 0; i < categories.length; i++) {
       const category = categories[i];
@@ -101,13 +106,21 @@ function App() {
     nameQuery: "",
     authorQuery: "",
     articles: [],
+    isLoading: true,
   });
 
+  const [search, setSearch] = useState("");
+  const [cancelToken, setCancelToken] = useState(null);
+
   useEffect(() => {
-    setData((value) => ({
-      ...value,
-      articles: newsData.articles,
-    }));
+    const timeoutId = setTimeout(() => {
+      setData((value) => ({
+        ...value,
+        articles: newsData.articles,
+      }));
+    }, 10000);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   let filteredArticle = [];
@@ -276,10 +289,18 @@ function App() {
               >
                 Deals
               </button>
-              <button type="button" className="btn btn-outline-secondary">
+              <button
+                onClick={(Event) => handleCategories(Event, "Health")}
+                type="button"
+                className="btn btn-outline-secondary"
+              >
                 Health
               </button>
-              <button type="button" className="btn btn-outline-secondary">
+              <button
+                onClick={(Event) => handleCategories(Event, "Otomotif")}
+                type="button"
+                className="btn btn-outline-secondary"
+              >
                 Otomotif
               </button>
             </div>

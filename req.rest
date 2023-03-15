@@ -1,0 +1,14 @@
+GET http://localhost:4000/
+
+
+###
+POST http://localhost:4000/liveSearchQuery
+Content-Type: application/json
+
+{
+    "queryType":"content",
+    "queryValue" :"aple"
+}
+
+###
+GET http://localhost:4000/data
